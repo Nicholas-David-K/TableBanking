@@ -17,15 +17,6 @@ BOOSTER_TYPES = (
 	('ED', 'Education')
 )
 
-
-class Profile(models.Model):
-	name = models.CharField(default='Helen', max_length=10)
-	image = models.ImageField(upload_to='photos/%Y/%m/%d/')
-
-	def __str__(self):
-		return self.name
-
-
 class Saving(models.Model):
 	name = models.CharField(max_length=20, default='Saving')
 	amount = models.IntegerField()

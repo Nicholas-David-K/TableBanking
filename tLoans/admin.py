@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Saving, Short_term, Long_term, Booster, Repayment, ShortTermInterest, LongTermInterest, Profile
+from .models import Saving, Short_term, Long_term, Booster, Repayment, ShortTermInterest, LongTermInterest
 
 # Register your models here.
 class SavingAdmin(admin.ModelAdmin):
@@ -45,6 +45,3 @@ admin.site.register(Repayment, RepaymentAsmin)
 admin.site.register(ShortTermInterest)
 
 admin.site.register(LongTermInterest)
-
-
-admin.site.register(Profile)
