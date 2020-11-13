@@ -262,7 +262,7 @@ class DeductSaving(LoginRequiredMixin, View):
     return redirect('home')
 
 
-class LoanInformation(LoginRequiredMixin, View):
+class LoanInformation(View):
   def get(self, *args, **kwargs):
     context = {
       'saving': Saving.objects.all().last(),
