@@ -1,0 +1,144 @@
+.repayment-box {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  border-radius: 5rem;
+  text-align: center;
+}
+
+#navbar {
+  text-transform:uppercase;
+}
+
+#nav-brand {
+  font-weight:bold;
+}
+
+body {
+  color:#222;
+  font-family:Montserrat, sans-serif;
+}
+
+#short-term-heading {
+  font-weight:700;
+  color:rgb(108,117,125);
+  margin-bottom:34px;
+}
+
+#short-term-amount {
+  font-weight: 700;
+}
+
+#short-term-card-1 {
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  opacity: .95;
+  padding:1.5rem;
+}
+
+#short-term-card-2 {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  opacity: .95;
+  padding:1.5rem;
+}
+
+#short-term-card-3 {
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  opacity: .95;
+  padding:1.5rem;
+}
+
+.login-clean form {
+  max-width:100%;
+}
+
+.login-clean {
+  background:none;
+  padding:1.5rem;
+}
+
+.short-term-modal form .form-control {
+  background:#f7f9fc;
+  border:none;
+  border-bottom:1px solid #dfe7f1;
+  border-radius:2rem;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+  text-indent:8px;
+  height:42px;
+}
+
+.modal-header {
+  border-bottom:none;
+}
+
+.modal-title {
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.modal-content {
+  padding:2.5rem;
+}
+
+.modal-1 {
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  opacity: .95;
+}
+
+.modal-2 {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  opacity: .95;
+}
+
+.modal-3 {
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  opacity: .95;
+}
+
+.savings-modal form .form-control {
+  border:none;
+  border-bottom:1px solid #dfe7f1;
+  border-radius:2rem;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+  text-indent:8px;
+  height:42px;
+}
+
+
+#short-loan-heading {
+  font-weight:600;
+  text-transform:uppercase;
+}
+
+
+#jumbotron-short {
+  /* background:linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  opacity: .95;
+}
+
+#months-title, #months-title-2 {
+  font-weight:bold;
+}
+
+#payment-plan {
+  background:#e2d1c3;
+}
+
+#payment-plan-heading {
+  font-weight:bold;
+}
+
+.table thead th {
+  font-size:12.8px;
+}
+
+.nav-item {
+  font-weight: 600;
+}
+
+
+#side-menu {
+  background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%) !important;
+}

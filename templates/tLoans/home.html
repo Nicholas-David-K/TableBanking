@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div id="hero-bottom">
+      <div class="container">
+          <div class="row justify-content-center align-items-center">
+              {% include 'tLoans/partials/_alerts.html' %}
+              <div class="col-md-8 col-lg-4 col-xl-4" style="margin-bottom:10px;">
+                  <div class="card" id="short-term-card-1">
+                      <div class="card-body">
+                          <h4 class="text-uppercase text-center card-title" id="short-term-heading">Short Term</h4>
+                          {% if short_loans %}
+                            {% for loan in short_loans %}
+                                <h1 class="text-center" id="short-term-amount">KES {{ loan.amount }}</h1>
+                            {% endfor %}
+                          {% else %}
+                          <h1 class="text-center" id="short-term-amount">NO LOAN</h1>
+                          {% endif %}
+                          <h6 class="text-uppercase text-center text-muted card-subtitle mb-2">your short term</h6>
+
+                          {% if short_loans %}
+                          <a href="{% url 'short-term' %}" class="btn btn-dark btn-block">View Short Term</a>
+                          {% else %}
+                          <button class="btn btn-outline-dark btn-block" type="button" data-toggle="modal" data-target="#myModal1">Make a Loan</button>
+                          {% endif %}
+                        </div>
+                   
+                    </div>
+              </div>
+              <div class="col-md-8 col-lg-4 col-xl-4" style="margin-bottom:10px;">
+                  <div class="card" id="short-term-card-2">
+                      <div class="card-body">
+                          <h4 class="text-uppercase text-center card-title" id="short-term-heading">Savings</h4>
+                          {% if saving %}
+                            <h1 class="text-center" id="short-term-amount">KES {{ saving.amount }}</h1>
+                          {% else %}
+                          <h1 class="text-center" id="short-term-amount">NO SAVINGS</h1>
+                          {% endif %}
+                          <h6 class="text-uppercase text-center text-muted card-subtitle mb-2">your &nbsp;savings</h6><button class="btn btn-outline-dark btn-block" type="button" data-toggle="modal" data-target="#myModal2">Add Savings</button></div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-xl-4">
+                  <div class="card" id="short-term-card-3">
+                      <div class="card-body">
+                          <h4 class="text-uppercase text-center card-title" id="short-term-heading">Long Term</h4>
+                          {% if long_loans %}
+                            {% for loan in long_loans %}
+                                <h1 class="text-center" id="short-term-amount">KES {{ loan.amount }}</h1>
+                            {% endfor %}
+                          {% else %}
+                            <h1 class="text-center" id="short-term-amount">NO LOAN</h1>
+                          {% endif %}
+                          <h6 class="text-uppercase text-center text-muted card-subtitle mb-2">long term balance</h6>
+
+                          {% if long_loans %}
+                            <a href="{% url 'long-term' %}" class="btn btn-dark btn-block">View Long Term</a>
+                          {% else %}
+                            <button class="btn btn-outline-dark btn-block" type="button" data-toggle="modal" data-target="#myModal3">Make Loan</button></div>
+                          {% endif %}
+                          
+                  </div>
+              </div>
+              <!-- short term modal -->
+              <div class="col">
+                    <div class="modal fade" role="dialog" tabindex="-1" id="myModal1">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content modal-1">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Short Term Loan</h4><br>
+                                    <p id="error"></p>  
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="short-term-modal">
+                                        <form method="POSt">
+                                            {% csrf_token %}
+                                            <p>Short Term Loans are paid within one month or three months. They are paid with an interest rate of <b>10%</b></p>
+                                            <div class="form-group">
+                                                <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to loan" /> -->
+                                                {{ form.amount }}
+                                            </div>
+                                            <small class="text-muted">Select duration in which you would like to repay the loan</small>
+                                            <div class="form-check mb-3 mt-2 pl-0">
+                                                <!-- <input class="form-check-input" type="radio" id="formCheck-2" name="loan-duration" />
+                                                <label class="form-check-label" for="formCheck-2">One Month</label> -->
+                                                {{ form.payment_period }}
+                                            </div>
+                    
+                                            <div class="form-group mt-5">
+                                                <button class="btn btn-dark float-right" type="submit">Make Loan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- savings modal -->
+              <div class="col">
+                  <div class="modal fade" role="dialog" tabindex="-1" id="myModal2">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content modal-2">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Savings</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="savings-modal">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <form method="POST" action="{% url 'add-saving' %}">
+                                                    {% csrf_token %}
+                                                    <p>Enter the amount you would like to save</p>
+                                                    <div class="form-group">
+                                                        <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to save" /> -->
+                                                        {{ saving_form.amount }}
+                                                    </div>
+                                                    <button class="btn btn-success text-center" type="submit">Add Savings</button>
+                                                </form>     
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <form method="POST" action="{% url 'remove-saving' %}">
+                                                    {% csrf_token %}
+                                                    <p>Deduct Amount from your savings</p>
+                                                    <div class="form-group">
+                                                        <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to deduct" /> -->
+                                                        {{ remove_saving_form.amount }}
+                                                    </div>
+                                                    <button class="btn btn-danger text-center float-right" type="submit">Deduct Savings</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- long term modal -->
+              <div class="col">
+                  <div class="modal fade" role="dialog" tabindex="-1" id="myModal3">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content modal-3">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Long Term</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                <div class="modal-body">
+                                    <div class="short-term-modal">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <p>Logn Term Loans are paid within one 24 or 36 months. They are paid with an interest rate of <b>1.12%</b></p>
+                                            <div class="form-group">
+                                                <!-- <input class="form-control" type="number" name="long_term_loan_amount" placeholder="Enter amount to loan" /> -->
+                                                {{ form2.amount }}
+                                            </div>
+                                            <small class="text-muted">Enter duration in which you would like to repay the loan</small>
+                                            <div class="form-check p-0">
+                                                <!-- <input class="form-check-input" type="radio" id="formCheck-2" name="longterm-duration" /><label class="form-check-label" for="formCheck-2">36 Months</label> -->
+                                                {{ form2.payment_period }}
+                                            </div>
+
+                                            <div class="form-group mt-5">
+                                                <button class="btn btn-dark float-right" type="submit">Make Loan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
+  </div>
+{% endblock content %} 

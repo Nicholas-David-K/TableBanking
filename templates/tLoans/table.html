@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="short-term-hero-card">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="jumbotron" id="jumbotron-short">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 id="short-loan-heading">Your contributions</h2>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Normal Saving</th>
+                                                    <th>Short Term Loan</th>
+                                                    <th>Short Term Interest Repayment&nbsp;</th>
+                                                    <th>Long Term Loan Balance&nbsp;</th>
+                                                    <th>Long Term Interest Repayment&nbsp;</th>
+                                                    <th>Educaton Booster</th>
+                                                    <th>Agriculture Booster</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        {% if saving %}
+                                                            {{ saving.amount }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if short_term %}
+                                                            {{ short_term.amount }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if short_term_interest %}
+                                                            {{ short_term_interest.amount }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if long_term %}
+                                                            {{ long_term.amount_left }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if long_term_interest %}
+                                                            {{ long_term_interest }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if education %}
+                                                        {{ education.amount }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if agriculture %}
+                                                        {{ agriculture.amount }}
+                                                        {% else %}
+                                                            -
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
