@@ -6,33 +6,33 @@
       <div class="row justify-content-center">
           <div class="col">
             {% include 'tLoans/partials/_alerts.html' %}
-            <hr>
-              <div class="jumbotron" id="jumbotron-short">
+              <div class="jumbotron p-4" id="jumbotron-short">
                   <div class="row">
                       {% for loan in loans %}
                         <div class="col-lg-8">
-                            <h2 id="short-loan-heading">short term loan</h2>
-                            <p></p>
-                            <h1 class="repayment-box" id="short-term-loan-balance" style="font-size:67px;font-weight:bold;">KES {{ loan.amount }}</h1>
+                            <h6 id="short-loan-heading">short term loan</h6>
                             <hr>
-                            <p class="text-uppercase" id="payment-plan-heading">payment plan</p>
+                            <h6 class="repayment-box text-left" id="short-term-loan-balance" style="font-size:30px;font-weight:bold;">KES {{ loan.amount }}</h6>
+                       
+                            <small class="text-uppercase" id="payment-plan-heading">payment plan</small>
                             <div class="card border-0">
                                 {% if loan.payment_period == 'TM' %}
                                 <div class="card-body modal-1 p-0">
-                                    <h6 class="text-muted card-subtitle">
-                                        <strong>1st Month: KES {{ loan.first_second_month | floatformat:0 }}</strong></h6>
-                                    <hr>
-                                    <h6 class="text-muted card-subtitle">
-                                        <strong>2nd Month: KES {{ loan.first_second_month | floatformat:0 }}</strong></h6>
-                                    <hr>
-                                    <h6 class="text-muted card-subtitle">
-                                        <strong>3rd Month: KES {{ loan.final_amount | floatformat:0 }}</strong></h6>
+                                    <p class="text-muted card-subtitle mb-1" style="font-size: 12px;">
+                                        1st Month: <b>KES {{ loan.first_second_month | floatformat:0 }}</b>
+                                    </p>
+                                    <p class="text-muted card-subtitle mb-1" style="font-size: 12px;">
+                                        2nd Month: <b>KES {{ loan.first_second_month | floatformat:0 }}</b>
+                                    </p>
+                                    <p class="text-muted card-subtitle" style="font-size: 12px;">
+                                        3rd Month: <b>KES {{ loan.final_amount | floatformat:0 }}</b>
+                                    </p>
                                 </div>
                                 {% else %}
-                                <div class="card-body">
-                                    <h6 class="text-muted card-subtitle">
+                                <div class="card-body modal-1 p-0">
+                                    <small class="text-muted card-subtitle">
                                         <strong>One Month Repayment: KES {{ loan.final_amount | floatformat:0 }}</strong>
-                                    </h6>
+                                    </small>
                                 </div>
                                 {% endif %}
 
@@ -41,29 +41,29 @@
                             <div class="mt-5 repayment-box">
                                 {% if loan.payment_period == 'TM' %}
                                 {% if loan.paid_months.count <= 2 %}
-                                <p style="font-size:15px;font-weight:bold;">You have repaid {{ loan.paid_months.count }} months</p>
+                                <small style="font-size:12px;font-weight:bold;">You have repaid {{ loan.paid_months.count }} months</small>
                                 {% else %}
-                                    <p style="font-size:15px;font-weight:bold;">You have finished repaying your loan</p>
+                                    <small style="font-size:12px;font-weight:bold;">You have finished repaying your loan</small>
                                 {% endif %}
                                 {% endif %}
 
                                 {% if loan.payment_period == 'OM' %}
                                     {% if loan.paid_months.count == 0 %}
-                                        <p style="font-size:15px;font-weight:bold;">You have not repaid your loan</p>
+                                        <small style="font-size:15px;font-weight:bold;">You have not repaid your loan</small>
                                     {% else %}
-                                        <p style="font-size:15px;font-weight:bold;">You have finished repaying your loan</p>
+                                        <small style="font-size:12px;font-weight:bold;">You have finished repaying your loan</small>
                                     {% endif %}
                                 {% endif %}
 
                             </div>
-                            <div class="repayment-months-info my-3">
+                            <div class="repayment-months-info my-2">
                                 {% if loan.payment_period == 'TM' %}
                                     {% for item in loan.paid_months.all %}
-                                        <p class="badge badge-pill badge-dark p-2">{{ forloop.counter }} payment made: KES {{ item.amount }}</p>
+                                        <small class="badge badge-pill badge-dark p-1">{{ forloop.counter }} payment made: KES {{ item.amount }}</small>
                                     {% endfor %}
                                 {% else %}
                                     {% for item in loan.paid_months.all %}
-                                         <p class="badge badge-pill badge-warning p-2">Payment made: KES {{ item.amount }}</p>
+                                         <small class="badge badge-pill badge-dark p-1">Payment made: KES {{ item.amount }}</small>
                                     {% endfor %}
                                 {% endif %}
                             </div>
@@ -72,7 +72,7 @@
                         {% if loan.payment_period == 'TM' %}
                             {% if loan.paid_months.count <= 2 %}
                             <div class="col-lg-4 flex-column align-items-center align-self-center">
-                                <h2 class="text-center" id="short-loan-heading">repay</h2>
+                                <h6 class="text-center" id="short-loan-heading">repay</h6>
                                     <div class="short-term-modal">
                                         <form method="POST">
                                             {% csrf_token %}
@@ -80,15 +80,15 @@
                                                 <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to repay" /> -->
                                                 {{ form.amount }}
                                             </div>
-                                            <button class="btn btn-dark btn-block" type="submit">Repay</button>
+                                            <button class="btn btn-dark btn-block btn-sm" type="submit">Repay</button>
                                         </form>
                                     </div>
                             </div>
                             {% else %}
                                 <div class="col-lg-4 flex-column align-items-center align-self-center text-center mt-3">
-                                    <i class="far fa-smile fa-9x text-center repayment-box"></i>
+                                    <i class="far fa-smile fa-2x text-center repayment-box"></i>
                                 </div>
-                                <a href="{% url 'delete-short-term' loan.pk %}" class="btn btn-danger">Delete Loan</a>
+                                <a href="{% url 'delete-short-term' loan.pk %}" class="btn btn-danger btn-sm">Delete Loan</a>
                             {% endif %}
                         {% endif %}
                         
@@ -111,16 +111,16 @@
                                 <div class="col-lg-4 flex-column align-items-center align-self-center text-center mt-3">
                                     <i class="far fa-smile fa-9x text-center repayment-box"></i>
                                 </div>
-                                <a href="{% url 'delete-short-term' loan.pk %}" class="btn btn-danger">Delete Loan</a>
+                                <a href="{% url 'delete-short-term' loan.pk %}" class="btn btn-danger btn-sm">Delete Loan</a>
                             {% endif %}
                             {% endif %}
                         {% empty %}
                  
-                            <div class="col-lg-7 align-items-center align-self-center">
-                                <h5>You have no Short Term Loan</h5>
+                            <div class="col-lg-7 align-items-center align-self-center p-0 text-center">
+                                <small>You have no <b>Short Term Loan</b></small>
                             </div>
-                            <div class="col-lg-5">
-                                <a href="{% url 'home' %}" class="btn btn-warning btn-block">Make a Short Term Loan &longrightarrow;</a>
+                            <div class="col-lg-5 text-center">
+                                <a href="{% url 'home' %}" class="btn btn-dark btn-block btn-sm">Make a Short Term Loan &longrightarrow;</a>
                             </div>
                     
                         

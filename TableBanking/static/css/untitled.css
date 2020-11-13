@@ -1,6 +1,7 @@
 .repayment-box {
   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
-  border-radius: 5rem;
+  border-radius: 1rem;
+  padding: 5px;
   text-align: center;
 }
 
@@ -20,7 +21,6 @@ body {
 #short-term-heading {
   font-weight:700;
   color:rgb(108,117,125);
-  margin-bottom:34px;
 }
 
 #short-term-amount {
@@ -29,20 +29,14 @@ body {
 
 #short-term-card-1 {
   background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
-  opacity: .95;
-  padding:1.5rem;
 }
 
 #short-term-card-2 {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-  opacity: .95;
-  padding:1.5rem;
 }
 
 #short-term-card-3 {
   background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
-  opacity: .95;
-  padding:1.5rem;
 }
 
 .login-clean form {

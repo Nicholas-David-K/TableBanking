@@ -7,55 +7,55 @@
               {% include 'tLoans/partials/_alerts.html' %}
               <div class="col-md-8 col-lg-4 col-xl-4" style="margin-bottom:10px;">
                   <div class="card" id="short-term-card-1">
-                      <div class="card-body">
-                          <h4 class="text-uppercase text-center card-title" id="short-term-heading">Short Term</h4>
+                      <div class="card-body text-center">
+                          <small class="text-uppercase text-center card-title mb-0" id="short-term-heading">Short Term</small>
                           {% if short_loans %}
                             {% for loan in short_loans %}
-                                <h1 class="text-center" id="short-term-amount">KES {{ loan.amount }}</h1>
+                                <h5 class="text-center" id="short-term-amount">KES {{ loan.amount }}</h5>
                             {% endfor %}
                           {% else %}
-                          <h1 class="text-center" id="short-term-amount">NO LOAN</h1>
+                          <h6 class="text-center" id="short-term-amount">NO LOAN</h6>
                           {% endif %}
-                          <h6 class="text-uppercase text-center text-muted card-subtitle mb-2">your short term</h6>
+                          <small class="text-uppercase text-center text-muted card-subtitle">your short term</small>
 
                           {% if short_loans %}
-                          <a href="{% url 'short-term' %}" class="btn btn-dark btn-block">View Short Term</a>
+                          <a href="{% url 'short-term' %}" class="btn btn-dark btn-block btn-sm">View Short Term</a>
                           {% else %}
-                          <button class="btn btn-outline-dark btn-block" type="button" data-toggle="modal" data-target="#myModal1">Make a Loan</button>
+                          <button class="btn btn-outline-dark btn-sm btn-block" type="button" data-toggle="modal" data-target="#myModal1">Make a Loan</button>
                           {% endif %}
                         </div>
-                   
                     </div>
               </div>
               <div class="col-md-8 col-lg-4 col-xl-4" style="margin-bottom:10px;">
-                  <div class="card" id="short-term-card-2">
+                  <div class="card text-center" id="short-term-card-2">
                       <div class="card-body">
-                          <h4 class="text-uppercase text-center card-title" id="short-term-heading">Savings</h4>
+                          <small class="text-uppercase card-title" id="short-term-heading">Savings</small>
                           {% if saving %}
-                            <h1 class="text-center" id="short-term-amount">KES {{ saving.amount }}</h1>
+                            <h5 class="text-center" id="short-term-amount">KES {{ saving.amount }}</h5>
                           {% else %}
-                          <h1 class="text-center" id="short-term-amount">NO SAVINGS</h1>
+                          <h6 class="text-center" id="short-term-amount">NO SAVINGS</h6>
                           {% endif %}
-                          <h6 class="text-uppercase text-center text-muted card-subtitle mb-2">your &nbsp;savings</h6><button class="btn btn-outline-dark btn-block" type="button" data-toggle="modal" data-target="#myModal2">Add Savings</button></div>
+                          <small class="text-uppercase text-center text-muted card-subtitle mb-2">your &nbsp;savings</small>
+                          <button class="btn btn-outline-dark btn-block btn-sm" type="button" data-toggle="modal" data-target="#myModal2">Add Savings</button></div>
                   </div>
               </div>
               <div class="col-lg-4 col-xl-4">
-                  <div class="card" id="short-term-card-3">
+                  <div class="card text-center" id="short-term-card-3">
                       <div class="card-body">
-                          <h4 class="text-uppercase text-center card-title" id="short-term-heading">Long Term</h4>
+                          <small class="text-uppercase card-title" id="short-term-heading">Long Term</small>
                           {% if long_loans %}
                             {% for loan in long_loans %}
-                                <h1 class="text-center" id="short-term-amount">KES {{ loan.amount }}</h1>
+                                <h5 class="text-center" id="short-term-amount">KES {{ loan.amount }}</h5>
                             {% endfor %}
                           {% else %}
-                            <h1 class="text-center" id="short-term-amount">NO LOAN</h1>
+                            <h6 class="text-center" id="short-term-amount">NO LOAN</h6>
                           {% endif %}
-                          <h6 class="text-uppercase text-center text-muted card-subtitle mb-2">long term balance</h6>
+                          <small class="text-uppercase text-center text-muted card-subtitle mb-2">long term balance</small>
 
                           {% if long_loans %}
-                            <a href="{% url 'long-term' %}" class="btn btn-dark btn-block">View Long Term</a>
+                            <a href="{% url 'long-term' %}" class="btn btn-dark btn-block btn-sm">View Long Term</a>
                           {% else %}
-                            <button class="btn btn-outline-dark btn-block" type="button" data-toggle="modal" data-target="#myModal3">Make Loan</button></div>
+                            <button class="btn btn-outline-dark btn-block btn-sm" type="button" data-toggle="modal" data-target="#myModal3">Make Loan</button></div>
                           {% endif %}
                           
                   </div>
@@ -66,16 +66,16 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content modal-1">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Short Term Loan</h4><br>
+                                    <h6 class="modal-title">Short Term Loan</h6><br>
                                     <p id="error"></p>  
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="short-term-modal">
-                                        <form method="POSt">
+                                        <form method="POST">
                                             {% csrf_token %}
-                                            <p>Short Term Loans are paid within one month or three months. They are paid with an interest rate of <b>10%</b></p>
+                                            <small>Short Term Loans are paid within one month or three months. They are paid with an interest rate of <b>10%</b></small>
                                             <div class="form-group">
                                                 <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to loan" /> -->
                                                 {{ form.amount }}
@@ -88,7 +88,7 @@
                                             </div>
                     
                                             <div class="form-group mt-5">
-                                                <button class="btn btn-dark float-right" type="submit">Make Loan</button>
+                                                <button class="btn btn-dark float-right btn-sm" type="submit">Make Loan</button>
                                             </div>
                                         </form>
                                     </div>
@@ -103,7 +103,7 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content modal-2">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Savings</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <h6 class="modal-title">Savings</h6><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="savings-modal">
@@ -111,23 +111,23 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <form method="POST" action="{% url 'add-saving' %}">
                                                     {% csrf_token %}
-                                                    <p>Enter the amount you would like to save</p>
+                                                    <small>Enter amount to save</small>
                                                     <div class="form-group">
                                                         <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to save" /> -->
                                                         {{ saving_form.amount }}
                                                     </div>
-                                                    <button class="btn btn-success text-center" type="submit">Add Savings</button>
+                                                    <button class="btn btn-success text-center btn-sm" type="submit">Add Savings</button>
                                                 </form>     
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <form method="POST" action="{% url 'remove-saving' %}">
                                                     {% csrf_token %}
-                                                    <p>Deduct Amount from your savings</p>
+                                                    <small>Enter amount to deduct</small>
                                                     <div class="form-group">
                                                         <!-- <input class="form-control" type="number" name="short-loan" placeholder="Enter amount to deduct" /> -->
                                                         {{ remove_saving_form.amount }}
                                                     </div>
-                                                    <button class="btn btn-danger text-center float-right" type="submit">Deduct Savings</button>
+                                                    <button class="btn btn-danger text-center float-right btn-sm" type="submit">Deduct Savings</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -143,12 +143,12 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content modal-3">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Long Term</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                    <h6 class="modal-title">Long Term</h6><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                                 <div class="modal-body">
                                     <div class="short-term-modal">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <p>Logn Term Loans are paid within one 24 or 36 months. They are paid with an interest rate of <b>1.12%</b></p>
+                                            <small>Logn Term Loans are paid within one 24 or 36 months. They are paid with an interest rate of <b>1.12%</b></small>
                                             <div class="form-group">
                                                 <!-- <input class="form-control" type="number" name="long_term_loan_amount" placeholder="Enter amount to loan" /> -->
                                                 {{ form2.amount }}
@@ -160,7 +160,7 @@
                                             </div>
 
                                             <div class="form-group mt-5">
-                                                <button class="btn btn-dark float-right" type="submit">Make Loan</button>
+                                                <button class="btn btn-dark float-right btn-sm" type="submit">Make Loan</button>
                                             </div>
                                         </form>
                                     </div>

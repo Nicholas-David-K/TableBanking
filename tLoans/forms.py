@@ -11,7 +11,7 @@ class ShortTermForm(forms.ModelForm):
     widgets = {
       'amount': forms.NumberInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Enter amount to loan',
+        'placeholder': 'Amount to loan...',
         'type': 'number'
       }),
       'payment_period': forms.Select(attrs={
@@ -30,7 +30,7 @@ class LongTermForm(forms.ModelForm):
     widgets = {
       'amount': forms.NumberInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Enter amount to loan man',
+        'placeholder': 'Amount to loan...',
         'type': 'number'
       }),
       'payment_period': forms.Select(attrs={
@@ -49,7 +49,7 @@ class ReturnShortLoan(forms.ModelForm):
       'amount': forms.NumberInput(attrs={
         'class': 'form-control',
         'type': 'number',
-        'placeholder': 'Enter amount to repay'
+        'placeholder': 'Amount to repay...'
       })
     }
 
@@ -62,7 +62,7 @@ class ReturnLongTerm(forms.ModelForm):
       'amount': forms.NumberInput(attrs={
         'class': 'form-control',
         'type': 'number',
-        'placeholder': 'Enter amount to repay'
+        'placeholder': 'Amount to repay...'
       })
     }
 
@@ -75,7 +75,7 @@ class SavingForm(forms.ModelForm):
     widgets = {
       'amount': forms.NumberInput(attrs={
         'type': 'number',
-        'placeholder': 'Enter amount to save',
+        'placeholder': 'Amount to save...',
         'class': 'form-control'
       })
     }
@@ -88,7 +88,7 @@ class RemoveSavingForm(forms.ModelForm):
     widgets = {
       'amount': forms.NumberInput(attrs={
         'type': 'number',
-        'placeholder': 'Enter amount to deduct',
+        'placeholder': 'Amount to deduct...',
         'class': 'form-control'
       })
     }
@@ -105,7 +105,7 @@ class BoosterForm(forms.ModelForm):
       }),
       'amount': forms.NumberInput(attrs={
         'type': 'number',
-        'placeholder': 'Enter amount to save',
+        'placeholder': 'Amount to save...',
         'class': 'form-control',
         'required': 'required'
       })

@@ -88,7 +88,7 @@ class ShortTerm(LoginRequiredMixin, View):
     return render(self.request, 'tLoans/short_term.html', context)
 
 
-  def post(self, *args, **kwargs):
+  def post(self, request, *args, **kwargs):
     # get form data
     form = ReturnShortLoan(self.request.POST or None)
     if form.is_valid():
@@ -280,7 +280,7 @@ class DeleteLongTermPayment(LoginRequiredMixin, View):
 
   def get(self, request, pk):
     try:
-      repayment = Repayment.objects.filter(pk=pk)
+      repayment = Repayment.objects.filter(name='Long Term', pk=pk)
       if repayment.exists():
         amount = repayment.first()
         amount.delete()

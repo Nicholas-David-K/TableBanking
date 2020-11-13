@@ -4,32 +4,31 @@
 <div id="short-term-hero-card">
     <div class="container">
         {% include 'tLoans/partials/_alerts.html' %}
-        <hr>
         <div class="row justify-content-center">
             <div class="col">
-                <div class="jumbotron" id="jumbotron-short">
+                <div class="jumbotron p-3" id="jumbotron-short">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h2 id="short-loan-heading">BOOSTERS (Education &amp; agriculture)</h2>
+                            <h6 id="short-loan-heading">BOOSTERS (Education &amp; agriculture)</h6>
                             <hr>
-                            <p class="badge badge-light">Education Booster</p>
+                            <small class="badge badge-light">Education Booster</small>
                             {% if education %}
-                            <h1 id="short-term-loan-balance" style="font-size:67px;font-weight:bold;">KES {{ education.amount }}</h1>
-                            <small>Total Booster(Inc. interest): KES {{ education.booster_percent | floatformat:0 }}</small>
+                            <h6 id="short-term-loan-balance" class="repayment-box mt-2 text-left" style="font-size: 25px;font-weight:bold;">KES {{ education.amount }}</h6>
+                            <small>Total Booster(Inc. interest): <b>KES {{ education.booster_percent | floatformat:0 }}</b> </small>
                             {% else %}
-                            <h1 id="short-term-loan-balance" style="font-size:67px;font-weight:bold;">No Booster</h1>
+                            <h6 id="short-term-loan-balance" style="font-size:25px;font-weight:bold;">No Booster</h6>
                             {% endif %}
                             <hr>
-                            <p class="badge badge-light">Agriculture Booster</p>
+                            <small class="badge badge-light">Agriculture Booster</small>
                             {% if agriculture %}
-                            <h1 id="short-term-loan-balance" style="font-size:67px;font-weight:bold;">KES {{ agriculture.amount }}</h1>
-                            <small>Total Booster(Inc. interest): KES {{ agriculture.booster_percent | floatformat:0 }}</small>
+                            <h6 id="short-term-loan-balance" class="repayment-box mt-2 text-left" style="font-size: 25px;font-weight:bold;">KES {{ agriculture.amount }}</h6>
+                            <small>Total Booster(Inc. interest): <b>KES {{ agriculture.booster_percent | floatformat:0 }}</b> </small>
                             {% else %}
-                            <h1 id="short-term-loan-balance" style="font-size:67px;font-weight:bold;">No Booster</h1>
+                            <h6 id="short-term-loan-balance" style="font-size:25px;font-weight:bold;">No Booster</h6>
                             {% endif %}
                         </div>
                         <div class="col-lg-4 flex-column align-items-center align-self-center">
-                            <h2 class="text-center" id="short-loan-heading">Save</h2>
+                            <h6 class="text-center" id="short-loan-heading">Save</h6>
                             <div class="short-term-modal">
                                 <form method="POST">
                                     {% csrf_token %}
@@ -42,7 +41,7 @@
                                         <label class="form-check-label" for="formCheck-2">Booster type</label> -->
                                         {{ form.name }}
                                     </div>
-                                    <button class="btn btn-dark btn-block" type="submit">Save</button>
+                                    <button class="btn btn-dark btn-block btn-sm" type="submit">Save</button>
                                 </form>
                             </div>
                         </div>
