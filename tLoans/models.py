@@ -53,6 +53,8 @@ class Repayment(models.Model):
 
 class ShortTermInterest(models.Model):
 	amount = models.IntegerField(default=0)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
 		return f"{self.amount}"
@@ -60,6 +62,8 @@ class ShortTermInterest(models.Model):
 
 class LongTermInterest(models.Model):
 	amount = models.IntegerField()
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
 		return f"{self.amount}"

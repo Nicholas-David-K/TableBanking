@@ -138,7 +138,6 @@ class LongTerm(LoginRequiredMixin, View):
         if not loan.amount_left:
           loan.amount_left = loan.amount
 
-        loan.amount_left -= amount
 
         # add payment to repayment
         repayment = Repayment(
@@ -158,6 +157,7 @@ class LongTerm(LoginRequiredMixin, View):
           current_interest = 0
 
         long_term_interest_repayement = (total * 1.12) - total
+        loan.amount_left -= (amount - long_term_interest_repayement)
 
         interest = LongTermInterest(
           amount = long_term_interest_repayement + current_interest

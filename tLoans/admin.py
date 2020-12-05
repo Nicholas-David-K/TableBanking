@@ -34,14 +34,19 @@ admin.site.register(Booster, BoosterAdmin)
 
 
 
-class RepaymentAsmin(admin.ModelAdmin):
+class RepaymentAdmin(admin.ModelAdmin):
   list_display = ('amount', 'name')
   list_display_links = ('amount',)
 
-admin.site.register(Repayment, RepaymentAsmin)
+admin.site.register(Repayment, RepaymentAdmin)
 
 
+class ShortTermInterestAdmin(admin.ModelAdmin):
+  list_display = ('amount', 'created_at')
+  list_display_links = ('amount',)
+admin.site.register(ShortTermInterest, ShortTermInterestAdmin)
 
-admin.site.register(ShortTermInterest)
-
-admin.site.register(LongTermInterest)
+class LongTermInterestAdmin(admin.ModelAdmin):
+  list_display = ('amount', 'created_at')
+  list_display_links = ('amount',)
+admin.site.register(LongTermInterest, LongTermInterestAdmin)
